@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accesso Riservato | RetroStationRewind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        :root { --bg-dark: #020617; --accent: #38bdf8; }
+        body { background-color: var(--bg-dark); color: #f1f5f9; font-family: 'Inter', sans-serif; overflow: hidden; }
+        .pixel-font { font-family: 'Press Start 2P', cursive; }
+        
+        /* 1. SCHERMATA DI LOGIN (Il Muro Iniziale) */
+        #login-gate {
+            position: fixed; inset: 0; background: var(--bg-dark);
+            z-index: 100; display: flex; align-items: center; justify-content: center;
+            flex-direction: column;
+        }
+
+        .login-box {
+            background: #0f172a; border: 2px solid #1e293b;
+            padding: 2.5rem; border-radius: 1.5rem; box-shadow: 0 0 60px rgba(0,0,0,0.8);
+            max-width: 420px; width: 90%; text-align: center;
+        }
+
+        /* 2. AREA ARCHIVIO (Nascosta finché non si logga) */
+        #private-archive { display: none; min-h-screen; flex-direction: column; }
+        
+        .archive-card {
+            background: linear-gradient(145deg, #0f172a, #1e293b);
+            border: 1px solid #334155; transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .archive-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+
+        .cursor { display: inline-block; width: 10px; height: 18px; background: var(--accent); animation: blink 1s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+    </style>
+</head>
+<body>
+
+    <div id="login-gate">
+        <div class="login-box">
+            <div class="mb-6">
+                <i class="fa-solid fa-shield-halved text-5xl text-sky-500"></i>
+            </div>
+            <h2 class="pixel-font text-[10px] mb-6 tracking-widest leading-loose">SISTEMA DI PROTEZIONE<br>ARCHIVIO ISO/ROM</h2>
+            
+            <p class="text-slate-500 text-[10px] uppercase mb-8 tracking-[0.2em]">Inserire Master Key per l'Host Personale</p>
+            
+            <input type="password" id="master-key" placeholder="CHIAVE DI ACCESSO" 
+                   class="w-full bg-black border border-slate-800 p-4 rounded-xl text-center text-sky-400 font-bold outline-none focus:border-sky-500 mb-6 transition-all">
+            
+            <button onclick="attemptLogin()" class="w-full bg-sky-600 hover:bg-sky-500 text-white font-bold py-4 rounded-xl uppercase text-[10px] tracking-[0.2em] transition-all shadow-lg shadow-sky-900/40">
+                Inizia Sessione
+            </button>
+            
+            <p id="error-msg" class="text-red-500 text-[10px] mt-6 uppercase font-bold hidden tracking-widest">Errore: Chiave non valida</p>
+        </div>
+        <p class="mt-8 text-[9px] text-slate-700 uppercase tracking-[0.5em]">RetroStation Security Protocol v4.0</p>
+    </div>
+
+    <div id="private-archive">
+        <nav class="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-950/50 backdrop-blur-md">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-server text-sky-400"></i>
+                <span class="pixel-font text-[9px] text-slate-400">HOST_STATUS: <span class="text-emerald-400">LIVE_24H</span></span>
+            </div>
+            <button onclick="logout()" class="text-slate-500 hover:text-white text-[10px] uppercase font-bold tracking-widest transition-colors">
+                Esci <i class="fa-solid fa-power-off ml-1"></i>
+            </button>
+        </nav>
+
+        <main class="flex-1 flex flex-col items-center justify-center px-6 py-20">
+            <div class="max-w-3xl w-full">
+                <div class="text-center mb-12">
+                    <h1 class="text-5xl font-black italic mb-4 uppercase tracking-tighter">Archivio <span class="text-sky-400">Riservato</span></h1>
+                    <p class="text-slate-400 text-lg font-light italic">Accesso diretto al repository personale ISO e ROM.</p>
+                </div>
+
+                <div class="archive-card p-10 rounded-[2.5rem] relative overflow-hidden group">
+                    <div class="absolute -top-10 -right-10 opacity-5 group-hover:opacity-10 transition-opacity">
+                        <i class="fa-solid fa-folder-tree text-[15rem]"></i>
+                    </div>
+                    
+                    <div class="relative z-10 text-left">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
+                            <h3 class="pixel-font text-sky-400 text-[9px]">PERSONAL_HOST_ROOT</h3>
+                        </div>
+                        
+                        <h2 class="text-3xl font-bold mb-4">Libreria ISO & ROM</h2>
+                        <p class="text-slate-400 text-base mb-8 leading-relaxed max-w-lg">
+                            Qui trovi i link diretti per scaricare i tuoi backup personali. Il server è monitorato e disponibile 24/7 per la tua RetroStation.
+                        </p>
+                        
+                        <a href="http://10.237.27.114/" target="_blank" class="inline-flex items-center justify-center gap-3 bg-white text-black px-8 py-4 rounded-2xl font-black hover:bg-sky-400 hover:text-white transition-all shadow-xl">
+                            <i class="fa-solid fa-cloud-arrow-down text-lg"></i> VAI AL DOWNLOAD
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mt-16 text-center">
+                    <p class="text-[10px] text-slate-600 uppercase tracking-[0.4em]">Connessione criptata stabilita <span class="cursor"></span></p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // LA TUA PASSWORD
+        const MASTER_KEY = "retro2026"; 
+
+        function attemptLogin() {
+            const input = document.getElementById('master-key').value;
+            const error = document.getElementById('error-msg');
+            
+            if (input === MASTER_KEY) {
+                sessionStorage.setItem('isLogged', 'true');
+                unlockArchive();
+            } else {
+                error.classList.remove('hidden');
+                document.getElementById('master-key').value = '';
+                // Animazione errore
+                const box = document.querySelector('.login-box');
+                box.style.borderColor = '#ef4444';
+                setTimeout(() => { box.style.borderColor = '#1e293b'; }, 500);
+            }
+        }
+
+        function unlockArchive() {
+            document.getElementById('login-gate').style.display = 'none';
+            document.getElementById('private-archive').style.display = 'flex';
+            document.body.style.overflow = 'auto';
+        }
+
+        function logout() {
+            sessionStorage.removeItem('isLogged');
+            window.location.reload();
+        }
+
+        // Controllo automatico sessione (per non rifare il login se ricarichi la pagina)
+        window.onload = () => {
+            if (sessionStorage.getItem('isLogged') === 'true') {
+                unlockArchive();
+            }
+        };
+
+        // Permetti Invio da tastiera
+        document.getElementById('master-key').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') attemptLogin();
+        });
+    </script>
+</body>
+</html>

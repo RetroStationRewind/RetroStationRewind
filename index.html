@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroStationRewind | Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <style>
+        :root { --bg-dark: #020617; --card-dark: #0f172a; --accent: #38bdf8; }
+        body { background-color: var(--bg-dark); color: #f1f5f9; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        
+        /* --- STILE LOGO DONKEY KONG --- */
+        .dk-logo-sprite {
+            width: 42px; /* Dimensione ottimale per la nav */
+            height: auto;
+            /* Mantiene i pixel definiti senza sfocature */
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            transition: transform 0.3s ease;
+        }
+        .logo-container:hover .dk-logo-sprite {
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        /* --- ARCADE STATUS BAR --- */
+        .arcade-ui {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 10px;
+            letter-spacing: 2px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        .blink-red { color: #ef4444; animation: arcadeBlink 1s infinite; }
+        @keyframes arcadeBlink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+
+        /* --- TITOLO RETRÒ-GAMING --- */
+        .retro-title-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        .retro-title {
+            font-size: clamp(2.2rem, 9vw, 4.8rem);
+            font-weight: 900;
+            text-transform: none;
+            font-style: italic;
+            letter-spacing: -2px;
+            white-space: nowrap;
+            background: linear-gradient(to bottom, #fff 0%, #bebdbd 40%, #ff00ff 45%, #fff 50%, #00ffff 55%, #1e40af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0px 0px 1px #000) drop-shadow(0px 0px 8px #00ffff) drop-shadow(0px 0px 15px #ff00ff);
+            animation: retroNeonGlow 3s infinite;
+        }
+        @keyframes retroNeonGlow {
+            0%, 100% { filter: drop-shadow(0px 0px 1px #000) drop-shadow(0px 0px 8px #00ffff) drop-shadow(0px 0px 15px #ff00ff); }
+            50% { filter: drop-shadow(0px 0px 1px #000) drop-shadow(0px 0px 12px #00ffff) drop-shadow(0px 0px 20px #ff00ff); }
+        }
+
+        /* --- EFFETTO CRT OVERLAY --- */
+        .crt-overlay {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            background-size: 100% 3px, 3px 100%;
+            z-index: 9999;
+            pointer-events: none;
+            display: none;
+        }
+        .crt-flicker {
+            animation: flicker 0.15s infinite;
+            opacity: 0.05;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #fff; z-index: 10000; pointer-events: none; display: none;
+        }
+        @keyframes flicker { 0% { opacity: 0.032; } 50% { opacity: 0.025; } 100% { opacity: 0.038; } }
+        .crt-active .crt-overlay, .crt-active .crt-flicker { display: block; }
+        .crt-active body { text-shadow: 0 0 2px rgba(56, 189, 248, 0.5); }
+
+        .hero-gradient { background: radial-gradient(circle at top, #1e293b 0%, #020617 70%); }
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link:hover { color: var(--accent); }
+        .feature-card { background: var(--card-dark); border: 1px solid #1e293b; transition: all 0.3s ease; }
+        .feature-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 0 20px rgba(56, 189, 248, 0.1); }
+    </style>
+</head>
+<body class="selection:bg-sky-500/30">
+
+    <div class="crt-overlay"></div>
+    <div class="crt-flicker"></div>
+
+    <nav class="flex items-center justify-between px-8 py-6 border-b border-slate-800 bg-slate-950/50 backdrop-blur-md sticky top-0 z-50">
+        <a href="index.html" class="logo-container flex items-center gap-4 group">
+            <img src="dk-sprite.gif" alt="DK" class="dk-logo-sprite">
+            
+            <div class="flex flex-col">
+                <span class="text-xl font-black uppercase tracking-tighter text-white leading-none">
+                    RetroStation<span class="text-sky-400">Rewind</span>
+                </span>
+                <span class="text-[8px] font-bold text-slate-500 tracking-[0.2em] uppercase mt-1">High Score: 999999</span>
+            </div>
+        </a>
+
+        <div class="hidden xl:flex gap-6 font-medium text-[10px] uppercase tracking-widest text-slate-400">
+            <a href="index.html" class="text-sky-400 font-bold">Home</a>
+            <a href="news.html" class="nav-link">News</a>
+            <a href="emulatori.html" class="nav-link">Emulatori</a>
+            <a href="hardware.html" class="nav-link">Hardware</a>
+            <a href="glossario.html" class="nav-link">Glossario</a>
+            <a href="archivio.html" class="nav-link text-white bg-sky-900/30 px-3 py-1 rounded shadow-sm shadow-sky-400/20">Archivio</a>
+            <a href="community.html" class="nav-link">Community</a>
+        </div>
+    </nav>
+
+    <header class="hero-gradient min-h-[65vh] flex flex-col items-center justify-center text-center px-4 pt-10">
+        <div class="arcade-ui">
+            <span class="blink-red">1P - 00</span>
+            <span class="text-white">HI-SCORE - 2026</span>
+            <span class="text-sky-400">CREDIT 01</span>
+        </div>
+        <div class="retro-title-container">
+            <h1 class="retro-title">RetroStationRewind</h1>
+        </div>
+        <p class="text-slate-400 max-w-2xl text-lg mb-10 leading-relaxed font-light italic">
+            "Il passato non è mai stato così fluido."
+        </p>
+        <div class="flex gap-4">
+            <a href="emulatori.html" class="px-8 py-4 bg-sky-600 hover:bg-sky-500 rounded-xl font-black text-xs uppercase tracking-widest transition">
+                Inizia Sessione
+            </a>
+        </div>
+    </header>
+
+    <section class="max-w-7xl mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <a href="news.html" class="feature-card p-10 rounded-3xl text-center">
+                <i class="fa-solid fa-bolt text-3xl text-yellow-400 mb-4"></i>
+                <h3 class="font-bold uppercase tracking-widest">Ultime News</h3>
+            </a>
+            <a href="emulatori.html" class="feature-card p-10 rounded-3xl text-center">
+                <i class="fa-solid fa-ghost text-3xl text-sky-400 mb-4"></i>
+                <h3 class="font-bold uppercase tracking-widest">Core & Soft</h3>
+            </a>
+            <a href="hardware.html" class="feature-card p-10 rounded-3xl text-center">
+                <i class="fa-solid fa-microchip text-3xl text-emerald-400 mb-4"></i>
+                <h3 class="font-bold uppercase tracking-widest">Hardware</h3>
+            </a>
+            <a href="glossario.html" class="feature-card p-10 rounded-3xl text-center border-sky-500/30">
+                <i class="fa-solid fa-book-open text-3xl text-sky-400 mb-4"></i>
+                <h3 class="font-bold uppercase tracking-widest text-sky-400">Glossario</h3>
+            </a>
+            <a href="archivio.html" class="feature-card p-10 rounded-3xl text-center border-red-900/30">
+                <i class="fa-solid fa-vault text-3xl text-red-500 mb-4"></i>
+                <h3 class="font-bold uppercase tracking-widest">Archivio ISO/ROM</h3>
+            </a>
+            <a href="community.html" class="feature-card p-10 rounded-3xl text-center">
+                <i class="fa-solid fa-users text-3xl text-white mb-4"></i>
+                <h3 class="font-bold uppercase tracking-widest">Community Hub</h3>
+            </a>
+        </div>
+    </section>
+
+    <footer class="py-16 text-center border-t border-slate-900 bg-slate-950/20">
+        <div class="mb-8">
+            <button onclick="toggleCRT()" class="px-6 py-2 border border-slate-700 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all">
+                <i class="fa-solid fa-tv mr-2"></i> Toggle CRT Effect
+            </button>
+        </div>
+        <p class="text-slate-700 text-[10px] uppercase font-bold tracking-[0.5em]">RetroStationRewind Hub | 2026</p>
+    </footer>
+
+    <script>
+        function toggleCRT() {
+            document.documentElement.classList.toggle('crt-active');
+            const isActive = document.documentElement.classList.contains('crt-active');
+            localStorage.setItem('crtMode', isActive);
+        }
+        window.onload = () => {
+            if (localStorage.getItem('crtMode') === 'true') {
+                document.documentElement.classList.add('crt-active');
+            }
+        };
+    </script>
+</body>
+</html>

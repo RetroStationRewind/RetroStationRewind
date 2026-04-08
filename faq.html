@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ & Troubleshooting | RetroStationRewind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --bg-dark: #020617; --card-dark: #0f172a; --accent: #38bdf8; }
+        body { background-color: var(--bg-dark); color: #f1f5f9; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .nav-link:hover { color: var(--accent); }
+        .faq-card { background: var(--card-dark); border: 1px solid #1e293b; transition: all 0.3s ease; }
+        .faq-card:hover { border-color: var(--accent); background: #131e32; }
+        .category-header { border-left: 4px solid var(--accent); padding-left: 1rem; margin: 3rem 0 1.5rem 0; }
+        .answer-text { color: #94a3b8; font-size: 0.95rem; line-height: 1.7; }
+        b { color: var(--accent); }
+        code { background: #020617; padding: 2px 6px; border-radius: 4px; color: #f472b6; font-family: monospace; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+    <nav class="flex items-center justify-between px-8 py-6 border-b border-slate-800 bg-slate-950/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <i class="fa-solid fa-compact-disc text-2xl text-sky-400"></i>
+            <span class="text-xl font-black uppercase">RetroStation<span class="text-sky-400">Rewind</span></span>
+        </div>
+        <div class="hidden md:flex gap-6 font-medium text-xs uppercase tracking-widest">
+            <a href="index.html" class="nav-link transition">Home</a>
+            <a href="emulatori.html" class="nav-link transition">Emulatori</a>
+            <a href="guide.html" class="nav-link transition">Guide</a>
+            <a href="faq.html" class="text-sky-400 font-bold">FAQ</a>
+            <a href="download.html" class="nav-link transition">Download</a>
+        </div>
+        <div class="text-slate-500 text-xs font-mono">v. 1.0</div>
+    </nav>
+
+    <header class="py-16 px-8 max-w-5xl mx-auto">
+        <h1 class="text-5xl font-black mb-4 italic tracking-tighter uppercase">Supporto <span class="text-sky-400">Tecnico</span></h1>
+        <p class="text-slate-400 text-lg">Trova risposte dettagliate alle configurazioni più complesse e risolvi i problemi di emulazione.</p>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-8 pb-32">
+
+        <div class="category-header">
+            <h2 class="text-2xl font-bold uppercase tracking-widest italic">Performance & Grafica</h2>
+        </div>
+
+        <div class="space-y-4">
+            <div class="faq-card p-6 rounded-2xl">
+                <h3 class="font-bold text-white mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-bolt text-yellow-500"></i> Perché il gioco subisce rallentamenti improvvisi (Stuttering)?
+                </h3>
+                <p class="answer-text">
+                    La causa principale è la <b>compilazione degli shader</b> in tempo reale. Quando l'emulatore incontra un nuovo effetto grafico, deve "tradurlo" per la tua scheda video. <br>
+                    <b>Soluzione:</b> Nelle impostazioni video, attiva l'opzione <b>"Async Shader Compilation"</b> o <b>"Ubershaders"</b> (su Dolphin). Questo permetterà al gioco di scorrere fluido mentre gli effetti vengono caricati in background.
+                </p>
+            </div>
+
+            <div class="faq-card p-6 rounded-2xl">
+                <h3 class="font-bold text-white mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-tv text-sky-400"></i> Qual è la differenza tra Vulkan, OpenGL e DirectX 12?
+                </h3>
+                <p class="answer-text">
+                    Sono "linguaggi" che l'emulatore usa per parlare con la tua GPU. 
+                    - <b>Vulkan:</b> Il più moderno e consigliato nel 2026. Offre le migliori prestazioni su AMD e NVIDIA.
+                    - <b>DirectX 12:</b> Ottimo su Windows 11, talvolta più stabile con GPU Intel.
+                    - <b>OpenGL:</b> Da usare solo come ultima spiaggia per compatibilità con vecchi titoli o vecchie schede video.
+                </p>
+            </div>
+        </div>
+
+        <div class="category-header">
+            <h2 class="text-2xl font-bold uppercase tracking-widest italic">BIOS & File di Sistema</h2>
+        </div>
+
+        <div class="space-y-4">
+            <div class="faq-card p-6 rounded-2xl">
+                <h3 class="font-bold text-white mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-file-code text-pink-500"></i> Ho i file BIOS ma l'emulatore non li vede. Perché?
+                </h3>
+                <p class="answer-text">
+                    Gli emulatori sono estremamente pignoli sui nomi dei file. Ad esempio, PCSX2 potrebbe richiedere che il file si chiami esattamente <code>SCPH-70008.bin</code> (case-sensitive). Inoltre, assicurati che i file non siano ancora compressi in formato <code>.zip</code> o <code>.rar</code>; devono essere estratti e avere estensione <b>.bin</b> o <b>.rom</b>.
+                </p>
+            </div>
+
+            <div class="faq-card p-6 rounded-2xl">
+                <h3 class="font-bold text-white mb-2 flex items-center gap-2">
+                    <i class="fa-solid fa-shield-halved text-emerald-500"></i> È sicuro scaricare i BIOS da internet?
+                </h3>
+                <p class="answer-text">

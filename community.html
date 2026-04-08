@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Hub | RetroStationRewind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --bg-dark: #020617; --card-dark: #0f172a; --accent: #38bdf8; }
+        body { background-color: var(--bg-dark); color: #f1f5f9; font-family: 'Inter', sans-serif; }
+        
+        .forum-header {
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+            border-bottom: 1px solid #334155;
+        }
+
+        .forum-row { 
+            transition: all 0.2s; 
+            border-left: 4px solid transparent;
+        }
+        .forum-row:hover { 
+            background: rgba(56, 189, 248, 0.05); 
+            border-left-color: var(--accent);
+        }
+
+        /* Scrollbar stilizzata */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+    </style>
+</head>
+<body class="pb-20">
+
+    <nav class="flex items-center justify-between px-8 py-6 border-b border-slate-800 bg-slate-950/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <i class="fa-solid fa-compact-disc text-2xl text-sky-400"></i>
+            <span class="text-xl font-black uppercase tracking-tighter text-white">RetroStation<span class="text-sky-400">Rewind</span></span>
+        </div>
+        <div class="hidden xl:flex gap-6 font-medium text-[10px] uppercase tracking-widest text-slate-400">
+            <a href="index.html" class="hover:text-sky-400">Home</a>
+            <a href="community.html" class="text-sky-400 font-bold">Community</a>
+        </div>
+    </nav>
+
+    <header class="max-w-6xl mx-auto px-6 pt-12 pb-8">
+        <h1 class="text-4xl font-black italic tracking-tighter mb-6 uppercase">Community Hub</h1>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-slate-900/50 border border-slate-800 p-4 rounded-xl text-center">
+                <div id="stat-posts" class="text-sky-400 font-bold text-xl">0</div>
+                <div class="text-[10px] uppercase text-slate-500 tracking-widest">Messaggi</div>
+            </div>
+            <div class="bg-slate-900/50 border border-slate-800 p-4 rounded-xl text-center">
+                <div class="text-emerald-400 font-bold text-xl">ON</div>
+                <div class="text-[10px] uppercase text-slate-500 tracking-widest">Status</div>
+            </div>
+        </div>
+    </header>
+
+    <section class="max-w-6xl mx-auto px-6 mb-12">
+        <div class="bg-slate-900/80 border border-sky-900/50 p-6 rounded-2xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <input id="postTitle" type="text" placeholder="Oggetto della discussione..." class="bg-slate-950 border border-slate-800 p-3 rounded-lg text-sm outline-none focus:border-sky-500">
+                <input id="postUser" type="text" placeholder="Tuo Nickname..." class="bg-slate-950 border border-slate-800 p-3 rounded-lg text-sm outline-none focus:border-sky-500">
+            </div>
+            <textarea id="postMsg" placeholder="Scrivi qui il tuo messaggio..." class="w-full bg-slate-950 border border-slate-800 p-3 rounded-lg text-sm h-24 outline-none focus:border-sky-500"></textarea>
+            <button onclick="savePost()" class="mt-4 px-8 py-3 bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold uppercase tracking-widest rounded-lg transition-all">
+                Pubblica nel Forum
+            </button>
+        </div>
+    </section>
+
+    <main class="max-w-6xl mx-auto px-6">
+        
+        <div class="rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/20">
+            <div class="forum-header px-6 py-4 flex justify-between items-center">
+                <span class="text-xs font-bold uppercase tracking-widest text-sky-400"><i class="fa-solid fa-list mr-2"></i> Discussioni Recenti</span>
+                <span class="text-[10px] text-slate-500 uppercase">Board Pubblico</span>
+            </div>
+
+            <div id="forum-list" class="divide-y divide-slate-800">
+                </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Carica i messaggi all'avvio
+        window.onload = renderForum;
+
+        function savePost() {
+            const title = document.getElementById('postTitle').value;
+            const user = document.getElementById('postUser').value;
+            const msg = document.getElementById('postMsg').value;
+
+            if(!title || !user || !msg) return alert("Completa tutti i campi!");
+
+            const newPost = {
+                id: Date.now(),
+                title: title,
+                user: user,
+                message: msg,
+                time: new Date().toLocaleDateString('it-IT') + ' ' + new Date().toLocaleTimeString('it-IT', {hour: '2-digit', minute:'2-digit'})
+            };
+
+            let posts = JSON.parse(localStorage.getItem('forumPosts')) || [];
+            posts.unshift(newPost);
+            localStorage.setItem('forumPosts', JSON.stringify(posts));
+
+            // Reset campi
+            document.getElementById('postTitle').value = '';
+            document.getElementById('postUser').value = '';
+            document.getElementById('postMsg').value = '';
+
+            renderForum();
+        }
+
+        function deletePost(id) {
+            let posts = JSON.parse(localStorage.getItem('forumPosts')) || [];
+            posts = posts.filter(p => p.id !== id);
+            localStorage.setItem('forumPosts', JSON.stringify(posts));
+            renderForum();
+        }
+
+        function renderForum() {
+            const list = document.getElementById('forum-list');
+            const posts = JSON.parse(localStorage.getItem('forumPosts')) || [];
+            document.getElementById('stat-posts').innerText = posts.length;
+
+            if(posts.length === 0) {
+                list.innerHTML = `<div class="p-10 text-center text-slate-600 italic">Il forum è vuoto. Sii il primo a scrivere!</div>`;
+                return;
+            }
+
+            list.innerHTML = posts.map(post => `
+                <div class="forum-row p-6 flex items-center gap-6 group">
+                    <div class="hidden md:flex w-12 h-12 bg-slate-800 rounded-full items-center justify-center text-sky-400">
+                        <i class="fa-solid fa-message"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3">
+                            <h3 class="font-bold text-lg text-slate-200">${post.title}</h3>
+                            <span class="text-[10px] bg-sky-500/10 text-sky-400 px-2 py-0.5 rounded">NEW</span>
+                        </div>
+                        <p class="text-sm text-slate-500 mt-1">${post.message}</p>
+                        <div class="flex items-center gap-4 mt-3 text-[10px] uppercase tracking-wider font-bold">
+                            <span class="text-sky-500"><i class="fa-solid fa-user mr-1"></i> ${post.user}</span>
+                            <span class="text-slate-600"><i class="fa-solid fa-clock mr-1"></i> ${post.time}</span>
+                        </div>
+                    </div>
+                    <button onclick="deletePost(${post.id})" class="text-slate-700 hover:text-red-500 transition-colors p-2">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossario Tecnico | RetroStationRewind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --bg-dark: #020617; --card-dark: #0f172a; --accent: #38bdf8; }
+        body { background-color: var(--bg-dark); color: #f1f5f9; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link:hover { color: var(--accent); }
+        .term-card { background: var(--card-dark); border: 1px solid #1e293b; transition: all 0.3s ease; }
+        .term-card:hover { border-color: var(--accent); background: #131c2f; }
+        .letter-anchor { color: var(--accent); font-family: 'Fira Code', monospace; }
+        .index-link { transition: all 0.2s; border-bottom: 2px solid transparent; }
+        .index-link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <nav class="flex items-center justify-between px-8 py-6 border-b border-slate-800 bg-slate-950/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <i class="fa-solid fa-compact-disc text-2xl text-sky-400"></i>
+            <span class="text-xl font-black uppercase tracking-tighter">RetroStation<span class="text-sky-400">Rewind</span></span>
+        </div>
+        <div class="hidden xl:flex gap-6 font-medium text-[10px] uppercase tracking-widest">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="news.html" class="nav-link">News</a>
+            <a href="emulatori.html" class="nav-link">Emulatori</a>
+            <a href="hardware.html" class="nav-link">Hardware</a>
+            <a href="glossario.html" class="text-sky-400 font-bold">Glossario</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
+            <a href="community.html" class="nav-link">Project</a>
+        </div>
+    </nav>
+
+    <header class="py-16 px-8 max-w-5xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-black mb-4 uppercase italic tracking-tighter">Glossario <span class="text-sky-400">Tecnico</span></h1>
+        <p class="text-slate-400 text-lg">Decodifica il linguaggio dell'emulazione. Tutto quello che devi sapere, dalla A alla Z.</p>
+    </header>
+
+    <div class="sticky top-[88px] bg-slate-950/80 backdrop-blur-md py-4 border-b border-slate-800 z-40">
+        <div class="max-w-5xl mx-auto px-8 flex justify-center flex-wrap gap-4 font-mono text-sm font-bold text-slate-500">
+            <a href="#A" class="index-link">A</a>
+            <a href="#B" class="index-link">B</a>
+            <a href="#C" class="index-link">C</a>
+            <a href="#D" class="index-link">D</a>
+            <a href="#F" class="index-link">F</a>
+            <a href="#I" class="index-link">I</a>
+            <a href="#J" class="index-link">J</a>
+            <a href="#S" class="index-link">S</a>
+            <a href="#V" class="index-link">V</a>
+        </div>
+    </div>
+
+    <main class="max-w-5xl mx-auto px-8 py-16">
+
+        <section id="A" class="mb-16">
+            <h2 class="letter-anchor text-3xl font-bold mb-8"># A</h2>
+            <div class="grid gap-6">
+                <div class="term-card p-6 rounded-2xl">
+                    <h3 class="text-sky-400 font-bold uppercase tracking-widest mb-2">API (Graphics)</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Interfaccia di programmazione che permette all'emulatore di comunicare con la tua scheda video. Esempi comuni: Vulkan, DirectX, OpenGL.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="B" class="mb-16">
+            <h2 class="letter-anchor text-3xl font-bold mb-8"># B</h2>
+            <div class="grid gap-6">
+                <div class="term-card p-6 rounded-2xl">
+                    <h3 class="text-sky-400 font-bold uppercase tracking-widest mb-2">BIOS / Firmware</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Il sistema operativo "base" della console originale. Molti emulatori (come quelli PS2 o Saturn) lo richiedono per poter avviare i giochi correttamente.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="D" class="mb-16">
+            <h2 class="letter-anchor text-3xl font-bold mb-8"># D</h2>
+            <div class="grid gap-6">
+                <div class="term-card p-6 rounded-2xl">
+                    <h3 class="text-sky-400 font-bold uppercase tracking-widest mb-2">Dumping</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Il processo di estrazione dei dati da una cartuccia o un disco originale per trasformarlo in un file digitale (ROM o ISO) leggibile dal PC.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="J" class="mb-16">
+            <h2 class="letter-anchor text-3xl font-bold mb-8"># J</h2>
+            <div class="grid gap-6">
+                <div class="term-card p-6 rounded-2xl">
+                    <h3 class="text-sky-400 font-bold uppercase tracking-widest mb-2">JIT (Just-In-Time) Compilation</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Una tecnica di emulazione che traduce il codice della console in codice PC "al volo". È molto più veloce dell'interpretazione pura ma richiede CPU più moderne.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="S" class="mb-16">
+            <h2 class="letter-anchor text-3xl font-bold mb-8"># S</h2>
+            <div class="grid gap-6 md:grid-cols-2">
+                <div class="term-card p-6 rounded-2xl">
+                    <h3 class="text-sky-400 font-bold uppercase tracking-widest mb-2">Shader Cache</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">File generati durante il gioco che memorizzano come renderizzare luci e ombre. Pre-compilarli evita gli "scatti" (stuttering) durante il gameplay.</p>
+                </div>
+                <div class="term-card p-6 rounded-2xl">
+                    <h3 class="text-sky-400 font-bold uppercase tracking-widest mb-2">Save State</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">Una funzione che permette di salvare istantaneamente in qualsiasi punto del gioco, ignorando i checkpoint originali.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="V" class="mb-16">
+            <h2 class="letter-anchor text-3xl font-bold mb-8"># V</h2>
+            <div class="grid gap-6">
+                <div class="term-card p-6 rounded-2xl">
+                    <h3 class="text-sky-400 font-bold uppercase tracking-widest mb-2">Vulkan</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">L'API grafica moderna più consigliata per l'emulazione. Offre prestazioni superiori e minor sovraccarico sulla CPU rispetto a OpenGL.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-12 border-t border-slate-900 bg-slate-950/50 text-center text-slate-700 text-[10px] uppercase font-bold tracking-[0.5em]">
+        RetroStationRewind | Knowledge Base 2026
+    </footer>
+
+</body>
+</html>

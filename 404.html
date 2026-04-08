@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - GAME OVER | RetroStationRewind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+        :root { --bg-dark: #020617; --retro-red: #ef4444; }
+        body { 
+            background-color: var(--bg-dark); 
+            color: white; 
+            font-family: 'Press Start 2P', cursive; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Effetto Scanlines per la 404 */
+        .crt-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+            background-size: 100% 4px;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .game-over-text {
+            font-size: 4rem;
+            color: var(--retro-red);
+            text-shadow: 5px 5px #000, 8px 8px rgba(239, 68, 68, 0.3);
+            animation: blink 1s infinite;
+            margin-bottom: 2rem;
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        .glitch-box {
+            position: relative;
+            padding: 20px;
+            border: 4px solid white;
+            background: black;
+            text-align: center;
+        }
+
+        .btn-continue {
+            margin-top: 3rem;
+            color: #38bdf8;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .btn-continue:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .errorCode {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.7rem;
+            color: #334155;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="crt-overlay"></div>
+
+    <div class="text-center">
+        <h1 class="game-over-text tracking-tighter">GAME OVER</h1>
+        
+        <div class="glitch-box">
+            <p class="text-[0.8rem] leading-relaxed">
+                ERROR 404:<br>
+                LEVEL NOT FOUND
+            </p>
+        </div>
+
+        <div class="mt-12">
+            <p class="text-[0.6rem] text-slate-400 mb-8 uppercase tracking-widest">
+                Hai perso una vita. La pagina che cerchi è stata eliminata o non è mai esistita.
+            </p>
+            
+            <a href="index.html" class="btn-continue">
+                <i class="fa-solid fa-rotate-left mr-2"></i> INSERT COIN (BACK TO HOME)
+            </a>
+        </div>
+    </div>
+
+    <div class="errorCode">
+        [ SYSTEM_FAILURE: NULL_REFERENCE ]
+    </div>
+
+</body>
+</html>

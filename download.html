@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Center | RetroStationRewind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --bg-dark: #020617; --card-dark: #0f172a; --accent: #38bdf8; }
+        body { background-color: var(--bg-dark); color: #f1f5f9; font-family: 'Inter', sans-serif; }
+        .nav-link:hover { color: var(--accent); }
+        .dl-table { width: 100%; border-collapse: separate; border-spacing: 0 8px; }
+        .dl-row { background: var(--card-dark); transition: all 0.2s; }
+        .dl-row:hover { background: #1e293b; transform: scale(1.01); }
+        .dl-cell { padding: 1.25rem; border-top: 1px solid #1e293b; border-bottom: 1px solid #1e293b; }
+        .dl-cell:first-child { border-left: 1px solid #1e293b; border-radius: 12px 0 0 12px; }
+        .dl-cell:last-child { border-right: 1px solid #1e293b; border-radius: 0 12px 12px 0; }
+        .btn-dl { background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%); transition: opacity 0.2s; }
+        .btn-dl:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+
+    <nav class="flex items-center justify-between px-8 py-6 border-b border-slate-800 bg-slate-950/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <i class="fa-solid fa-compact-disc text-2xl text-sky-400"></i>
+            <span class="text-xl font-black uppercase">RetroStation<span class="text-sky-400">Rewind</span></span>
+        </div>
+        <div class="hidden md:flex gap-8 font-medium text-xs uppercase tracking-widest">
+            <a href="index.html" class="nav-link transition">Home</a>
+            <a href="emulatori.html" class="nav-link transition">Emulatori</a>
+            <a href="guide.html" class="nav-link transition">Guide Setup</a>
+            <a href="download.html" class="text-sky-400 font-bold">Download</a>
+        </div>
+    </nav>
+
+    <main class="max-w-6xl mx-auto px-8 py-16">
+        
+        <div class="mb-12">
+            <h1 class="text-4xl font-black mb-4 italic uppercase tracking-tighter">Repository <span class="text-sky-400">File Ufficiali</span></h1>
+            <p class="text-slate-400">Scarica le ultime versioni stabili dei software e delle utility indispensabili.</p>
+        </div>
+
+        <section class="mb-16">
+            <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <i class="fa-solid fa-layer-group text-sky-400"></i> Emulatori Standalone (Link Diretti)
+            </h2>
+            <div class="overflow-x-auto">
+                <table class="dl-table">
+                    <thead>
+                        <tr class="text-slate-500 text-xs uppercase tracking-widest">
+                            <th class="text-left px-6 pb-2">Software</th>
+                            <th class="text-left px-6 pb-2">Piattaforma</th>
+                            <th class="text-left px-6 pb-2">Versione</th>
+                            <th class="text-right px-6 pb-2">Azione</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="dl-row">
+                            <td class="dl-cell font-bold">DuckStation (PSX)</td>
+                            <td class="dl-cell text-sm text-slate-400">Windows 10/11 x64</td>
+                            <td class="dl-cell text-sm font-mono text-emerald-400">Latest Build</td>
+                            <td class="dl-cell text-right">
+                                <a href="https://github.com/stenzek/duckstation/releases" target="_blank" class="btn-dl px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-tighter">Download</a>
+                            </td>
+                        </tr>
+                        <tr class="dl-row">
+                            <td class="dl-cell font-bold">PCSX2 (PS2)</td>
+                            <td class="dl-cell text-sm text-slate-400">Windows 10/11 x64</td>
+                            <td class="dl-cell text-sm font-mono text-emerald-400">v1.7.0 (Nightly)</td>
+                            <td class="dl-cell text-right">
+                                <a href="https://pcsx2.net/downloads/" target="_blank" class="btn-dl px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-tighter">Download</a>
+                            </td>
+                        </tr>
+                        <tr class="dl-row">
+                            <td class="dl-cell font-bold">mGBA (GBA)</td>
+                            <td class="dl-cell text-sm text-slate-400">Win/Linux/macOS</td>
+                            <td class="dl-cell text-sm font-mono text-emerald-400">v0.10.3</td>
+                            <td class="dl-cell text-right">
+                                <a href="https://mgba.io/downloads.html" target="_blank" class="btn-dl px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-tighter">Download</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="mb-16">
+            <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <i class="fa-solid fa-wrench text-sky-400"></i> Utility & Strumenti
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-slate-900/40 p-6 rounded-xl border border-slate-800 flex justify-between items-center hover:border-sky-500 transition">
+                    <div>
+                        <h3 class="font-bold">7-Zip</h3>
+                        <p class="text-xs text-slate-500">Necessario per estrarre le ROM e gli emulatori.</p>
+                    </div>
+                    <a href="https://www.7-zip.org/" target="_blank" class="text-sky-400 hover:text-white"><i class="fa-solid fa-external-link"></i></a>
+                </div>
+                <div class="bg-slate-900/40 p-6 rounded-xl border border-slate-800 flex justify-between items-center hover:border-sky-500 transition">
+                    <div>
+                        <h3 class="font-bold">ImgBurn</h3>
+                        <p class="text-xs text-slate-500">Per creare ISO dai tuoi dischi originali.</p>
+                    </div>
+                    <a href="https://www.imgburn.com/" target="_blank" class="text-sky-400 hover:text-white"><i class="fa-solid fa-external-link"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <div class="bg-sky-500/10 border border-sky-500/30 p-8 rounded-3xl">
+            <div class="flex items-start gap-4">
+                <i class="fa-solid fa-circle-info text-2xl text-sky-400"></i>
+                <div>
+                    <h4 class="font-bold text-white mb-2 uppercase text-sm tracking-widest">Politica sui contenuti</h4>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        RetroStationRewind **non ospita e non fornisce** link diretti a file protetti da copyright come ROM, ISO o BIOS proprietari. Il nostro obiettivo è esclusivamente la fornitura di link ai software di emulazione ufficiali e open source.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="py-12 px-8 border-t border-slate-900 bg-slate-950 text-center text-slate-500 text-xs">
+        <p>RetroStationRewind | Server Status: <span class="text-emerald-500 font-bold">ONLINE</span></p>
+    </footer>
+
+</body>
+</html>

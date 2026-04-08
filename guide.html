@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Base | RetroStationRewind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --bg-dark: #020617; --card-dark: #0f172a; --accent: #38bdf8; }
+        body { background-color: var(--bg-dark); color: #f1f5f9; font-family: 'Inter', sans-serif; line-height: 1.6; }
+        .nav-link:hover { color: var(--accent); }
+        .wiki-section { background: var(--card-dark); border: 1px solid #1e293b; border-radius: 1.5rem; overflow: hidden; margin-bottom: 2rem; }
+        .wiki-header { background: rgba(56, 189, 248, 0.05); padding: 1.5rem; border-bottom: 1px solid #1e293b; }
+        .wiki-content { padding: 2rem; }
+        .command-box { background: #020617; border-left: 4px solid var(--accent); padding: 1rem; font-family: monospace; font-size: 0.9rem; margin: 1rem 0; color: #94a3b8; }
+        .status-badge { font-size: 0.7rem; padding: 2px 10px; border-radius: 99px; background: #1e293b; color: var(--accent); border: 1px solid var(--accent); text-transform: uppercase; font-weight: bold; }
+        b { color: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <nav class="flex items-center justify-between px-8 py-6 border-b border-slate-800 bg-slate-950/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <i class="fa-solid fa-compact-disc text-2xl text-sky-400"></i>
+            <span class="text-xl font-black uppercase">RetroStation<span class="text-sky-400">Rewind</span></span>
+        </div>
+        <div class="hidden md:flex gap-8 font-medium text-xs uppercase tracking-widest">
+            <a href="index.html" class="nav-link transition">Home</a>
+            <a href="emulatori.html" class="nav-link transition">Emulatori</a>
+            <a href="guide.html" class="text-sky-400 font-bold">Guide Setup</a>
+            <a href="download.html" class="nav-link transition">Download</a>
+        </div>
+    </nav>
+
+    <header class="py-16 px-8 max-w-6xl mx-auto">
+        <div class="flex items-center gap-4 mb-4 text-sky-400 font-bold tracking-widest uppercase text-sm">
+            <span class="h-px w-12 bg-sky-400"></span>
+            Documentation Hub v1.0
+        </div>
+        <h1 class="text-5xl font-black mb-6 italic">Configurazione <span class="text-sky-400">Deep Dive</span></h1>
+        <p class="text-slate-400 text-lg max-w-3xl">In questa sezione troverai i parametri tecnici esatti per configurare la tua RetroStationRewind. Dalla gestione dei file BIOS alla correzione degli errori video più comuni.</p>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-8 pb-32">
+
+        <article class="wiki-section">
+            <div class="wiki-header flex justify-between items-center">
+                <h2 class="text-2xl font-bold flex items-center gap-3"><i class="fa-solid fa-microchip"></i> 1. Architettura BIOS</h2>
+                <span class="status-badge">Fondamentale</span>
+            </div>
+            <div class="wiki-content">
+                <p class="mb-4">Senza i file BIOS, gli emulatori come DuckStation o PCSX2 non possono inizializzare l'hardware virtuale. Questi file devono essere inseriti nella cartella <code>/bios/</code> del rispettivo emulatore.</p>
+                
+                <h3 class="text-sky-400 font-bold mt-6 mb-2">File Necessari (Nomi Esatti):</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="p-4 bg-slate-900/50 rounded-lg border border-slate-800">
+                        <p class="text-sm font-bold text-white mb-1 uppercase">Sony PlayStation 1</p>
+                        <ul class="text-xs text-slate-400 font-mono space-y-1">
+                            <li>scph5500.bin (Japan)</li>
+                            <li>scph5501.bin (USA)</li>
+                            <li>scph5502.bin (Europe)</li>
+                        </ul>
+                    </div>
+                    <div class="p-4 bg-slate-900/50 rounded-lg border border-slate-800">
+                        <p class="text-sm font-bold text-white mb-1 uppercase">Sony PlayStation 2</p>
+                        <ul class="text-xs text-slate-400 font-mono space-y-1">
+                            <li>SCPH-70008_BIOS_V12_PAL.bin</li>
+                            <li>SCPH-39001_BIOS_V7_USA.bin</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="mt-4 text-sm italic text-yellow-500/80"><i class="fa-solid fa-triangle-exclamation"></i> Attenzione: Il download di questi file è legale solo se possiedi fisicamente la console originale.</p>
+            </div>
+        </article>
+
+        <article class="wiki-section">
+            <div class="wiki-header flex justify-between items-center">
+                <h2 class="text-2xl font-bold flex items-center gap-3"><i class="fa-solid fa-gauge-high"></i> 2. Ottimizzazione Performance</h2>
+                <span class="status-badge">Advanced</span>
+            </div>
+            <div class="wiki-content">
+                <p class="mb-6">Per ottenere una grafica moderna nel 2026, non basta avviare il gioco. Devi agire sulle API grafiche e sul campionamento.</p>
+                
+                <h3 class="font-bold text-white mb-4">La scelta dell'API (Renderer):</h3>
+                <div class="space-y-4">
+                    <div class="flex gap-4">
+                        <b class="w-24 flex-shrink-0">Vulkan:</b>
+                        <p class="text-slate-400 text-sm">L'opzione migliore per schede video NVIDIA (Serie 30/40/50) e AMD. Riduce drasticamente l'input lag e lo stuttering.</p>
+                    </div>
+                    <div class="flex gap-4">
+                        <b class="w-24 flex-shrink-0">D3D12:</b>
+                        <p class="text-slate-400 text-sm">Consigliato se utilizzi GPU integrate Intel o se riscontri crash con Vulkan su Windows 11.</p>
+                    </div>
+                </div>
+
+                <div class="command-box">
+                    // Tip: Per PCSX2, attiva "Enable Widescreen Patches" per forzare i 16:9 <br>
+                    // Per DuckStation, attiva "PGXP Geometry Correction" per eliminare il tremolio dei muri.
+                </div>
+            </div>
+        </article>
+
+        <article class="wiki-section">
+            <div class="wiki-header flex justify-between items-center">
+                <h2 class="text-2xl font-bold flex items-center gap-3"><i class="fa-solid fa-gamepad"></i> 3. Input Latency & Controllers</h2>
+                <span class="status-badge">Setup</span>
+            </div>
+            <div class="wiki-content">
+                <p class="mb-4">Per un'esperienza autentica su <b>RetroStationRewind</b>, il controller deve rispondere istantaneamente.</p>
+                <ul class="list-none space-y-4">
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                        <span><b>Deadzone:</b> Imposta la zona morta degli analogici al 5% per evitare il "drift" dei vecchi titoli.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fa-solid fa-check text-emerald-500 mt-1"></i>
+                        <span><b>Hotkeys:</b> Configura una combinazione (es. Select + Start) per uscire istantaneamente dall'emulatore e tornare alla home.</span>
+                    </li>
+                </ul>
+            </div>
+        </article>
+
+    </main>
+
+    <footer class="py-12 px-8 border-t border-slate-900 bg-slate-950 text-center">
+        <p class="text-slate-500 text-sm">Documentazione Tecnica Ufficiale | RetroStationRewind Project 2026</p>
+    </footer>
+
+</body>
+</html>

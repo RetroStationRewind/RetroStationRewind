@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software & Core | RetroStationRewind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #020617;
+            --card-dark: #0f172a;
+            --accent-sky: #38bdf8;
+        }
+        body { background-color: var(--bg-dark); color: #f1f5f9; font-family: 'Inter', sans-serif; }
+        .nav-link:hover { color: var(--accent-sky); }
+        .emu-card { 
+            background: var(--card-dark); 
+            border: 1px solid #1e293b; 
+            transition: all 0.3s ease;
+        }
+        .emu-card:hover { border-color: var(--accent-sky); transform: scale(1.02); }
+        .tag { background: rgba(56, 189, 248, 0.1); color: var(--accent-sky); font-size: 0.7rem; font-weight: bold; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+
+    <nav class="flex items-center justify-between px-8 py-6 border-b border-slate-800 bg-slate-950/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <i class="fa-solid fa-compact-disc text-2xl text-sky-400"></i>
+            <span class="text-xl font-black uppercase">RetroStation<span class="text-sky-400">Rewind</span></span>
+        </div>
+        <div class="hidden md:flex gap-8 font-medium text-xs uppercase tracking-widest">
+            <a href="index.html" class="nav-link transition">Home</a>
+            <a href="emulatori.html" class="text-sky-400">Emulatori</a>
+            <a href="guide.html" class="nav-link transition">Guide Setup</a>
+            <a href="download.html" class="nav-link transition">Download</a>
+        </div>
+    </nav>
+
+    <header class="py-12 px-8 max-w-7xl mx-auto text-center md:text-left">
+        <h1 class="text-4xl font-extrabold mb-2">Catalogo <span class="text-sky-400">Emulatori</span></h1>
+        <p class="text-slate-400">I motori di gioco selezionati per garantire la massima compatibilità e performance.</p>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-8 pb-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+            <div class="emu-card p-6 rounded-2xl flex flex-col md:flex-row gap-6 border-l-4 border-sky-500">
+                <div class="md:w-1/3 bg-slate-800 rounded-xl flex items-center justify-center p-4 text-6xl">
+                    <i class="fa-solid fa-compact-disc text-slate-400"></i>
+                </div>
+                <div class="md:w-2/3">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="tag">PlayStation 1</span>
+                        <span class="tag">Top Rated</span>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-2 text-white">DuckStation (PSX)</h2>
+                    <p class="text-slate-400 text-sm mb-4">L'emulatore PS1 più avanzato. Supporta l'upscaling 4K, correzione della distorsione poligonale e PGXP.</p>
+                    <a href="https://github.com/stenzek/duckstation/releases" target="_blank" class="inline-block bg-sky-600 hover:bg-sky-500 text-white px-6 py-2 rounded-lg font-bold text-sm transition shadow-lg shadow-sky-900/40">Sito Ufficiale</a>
+                </div>
+            </div>
+
+            <div class="emu-card p-6 rounded-2xl flex flex-col md:flex-row gap-6">
+                <div class="md:w-1/3 bg-slate-800 rounded-xl flex items-center justify-center p-4 text-6xl">
+                    <i class="fa-solid fa-gamepad text-emerald-400"></i>
+                </div>
+                <div class="md:w-2/3">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="tag">GBA</span>
+                        <span class="tag">Lightweight</span>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-2">mGBA</h2>
+                    <p class="text-slate-400 text-sm mb-4">Veloce, preciso e ricco di funzionalità. Ideale per emulare il Game Boy Advance con colori fedeli all'originale.</p>
+                    <a href="https://mgba.io/downloads.html" target="_blank" class="inline-block bg-slate-700 hover:bg-slate-600 text-white px-6 py-2 rounded-lg font-bold text-sm transition">Sito Ufficiale</a>
+                </div>
+            </div>
+
+            <div class="emu-card p-6 rounded-2xl flex flex-col md:flex-row gap-6">
+                <div class="md:w-1/3 bg-slate-800 rounded-xl flex items-center justify-center p-4 text-6xl">
+                    <i class="fa-solid fa-vr-cardboard text-blue-500"></i>
+                </div>
+                <div class="md:w-2/3">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="tag">PlayStation 2</span>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-2">PCSX2</h2>
+                    <p class="text-slate-400 text-sm mb-4">La scelta definitiva per i giochi PS2. Nuova interfaccia grafica moderna e supporto controller nativo.</p>
+                    <a href="https://pcsx2.net/downloads/" target="_blank" class="inline-block bg-slate-700 hover:bg-slate-600 text-white px-6 py-2 rounded-lg font-bold text-sm transition">Sito Ufficiale</a>
+                </div>
+            </div>
+
+            <div class="emu-card p-6 rounded-2xl flex flex-col md:flex-row gap-6">
+                <div class="md:w-1/3 bg-slate-800 rounded-xl flex items-center justify-center p-4 text-6xl">
+                    🐬
+                </div>
+                <div class="md:w-2/3">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="tag">GameCube / Wii</span>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-2">Dolphin</h2>
+                    <p class="text-slate-400 text-sm mb-4">Emulazione perfetta per i titoli Nintendo a 128 bit e Wii con supporto Wiimote reale.</p>
+                    <a href="https://it.dolphin-emu.org/download/" target="_blank" class="inline-block bg-slate-700 hover:bg-slate-600 text-white px-6 py-2 rounded-lg font-bold text-sm transition">Sito Ufficiale</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="py-12 px-8 border-t border-slate-900 bg-slate-950 text-center text-slate-500 text-xs">
+        © 2026 RetroStationRewind | Non forniamo file protetti da copyright (ROM/BIOS).
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Update | RetroStationRewind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --bg-dark: #020617; --card-dark: #0f172a; --accent: #38bdf8; }
+        body { background-color: var(--bg-dark); color: #f1f5f9; font-family: 'Inter', sans-serif; }
+        .nav-link:hover { color: var(--accent); }
+        .news-card { 
+            background: var(--card-dark); 
+            border: 1px solid #1e293b; 
+            transition: all 0.3s ease;
+        }
+        .news-card:hover { border-color: var(--accent); transform: translateX(10px); }
+        .date-badge { background: rgba(56, 189, 248, 0.1); color: var(--accent); font-size: 0.7rem; font-weight: bold; padding: 4px 12px; border-radius: 99px; }
+    </style>
+</head>
+<body>
+
+    <nav class="flex items-center justify-between px-8 py-6 border-b border-slate-800 bg-slate-950/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <i class="fa-solid fa-compact-disc text-2xl text-sky-400"></i>
+            <span class="text-xl font-black uppercase">RetroStation<span class="text-sky-400">Rewind</span></span>
+        </div>
+        <div class="hidden md:flex gap-6 font-medium text-xs uppercase tracking-widest">
+            <a href="index.html" class="nav-link transition">Home</a>
+            <a href="news.html" class="text-sky-400 font-bold">News</a>
+            <a href="emulatori.html" class="nav-link transition">Emulatori</a>
+            <a href="guide.html" class="nav-link transition">Guide</a>
+            <a href="faq.html" class="nav-link transition">FAQ</a>
+            <a href="download.html" class="nav-link transition">Download</a>
+        </div>
+        <div class="text-slate-500 text-xs font-mono">v. 1.0</div>
+    </nav>
+
+    <header class="py-16 px-8 max-w-4xl mx-auto">
+        <h1 class="text-4xl font-black mb-4 uppercase italic">Changelog & <span class="text-sky-400">News</span></h1>
+        <p class="text-slate-400">Resta aggiornato sulle ultime release e sulle modifiche apportate alla piattaforma.</p>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-8 pb-32 space-y-8">
+
+        <article class="news-card p-8 rounded-3xl relative overflow-hidden">
+            <div class="flex items-center gap-4 mb-4">
+                <span class="date-badge">08 APRILE 2026</span>
+                <span class="text-xs text-slate-500 uppercase font-bold tracking-widest">Update Sito</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-3 text-white italic">Lancio di RetroStationRewind v1.0!</h2>
+            <p class="text-slate-400 leading-relaxed mb-4">
+                Oggi segna il debutto ufficiale della nostra piattaforma. Abbiamo integrato le sezioni per PSX e GBA, creato una Wiki dettagliata per i file BIOS e lanciato il centro FAQ per il supporto tecnico.
+            </p>
+            <div class="h-1 w-20 bg-sky-500 rounded-full"></div>
+        </article>
+
+        <article class="news-card p-8 rounded-3xl">
+            <div class="flex items-center gap-4 mb-4">
+                <span class="date-badge">05 APRILE 2026</span>
+                <span class="text-xs text-slate-500 uppercase font-bold tracking-widest">Emulazione</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-3 text-white italic">DuckStation introduce il "Texture Pack Launcher"</h2>
+            <p class="text-slate-400 leading-relaxed mb-4">
+                L'ultimo aggiornamento di DuckStation permette ora di caricare pacchetti di texture in HD creati dalla community direttamente dall'interfaccia principale, senza modificare i file di gioco.
+            </p>
+            <div class="h-1 w-20 bg-slate-700 rounded-full"></div>
+        </article>
+
+        <article class="news-card p-8 rounded-3xl">
+            <div class="flex items-center gap-4 mb-4">
+                <span class="date-badge">01 APRILE 2026</span>
+                <span class="text-xs text-slate-500 uppercase font-bold tracking-widest">Hardware</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-3 text-white italic">Nuovo supporto per Controller DualSense Edge</h2>
+            <p class="text-slate-400 leading-relaxed mb-4">
+                Tutti i core basati su RetroArch nel nostro catalogo ora supportano nativamente il feedback aptico e i trigger adattivi su Windows 11.
+            </p>
+            <div class="h-1 w-20 bg-slate-700 rounded-full"></div>
+        </article>
+
+    </main>
+
+    <footer class="py-12 px-8 border-t border-slate-900 bg-slate-950 text-center text-slate-500 text-xs">
+        © 2026 RetroStationRewind | Resta sintonizzato per nuovi aggiornamenti.
+    </footer>
+
+</body>
+</html>

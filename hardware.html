@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware & Periferiche | RetroStationRewind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --bg-dark: #020617; --card-dark: #0f172a; --accent: #38bdf8; }
+        body { background-color: var(--bg-dark); color: #f1f5f9; font-family: 'Inter', sans-serif; }
+        .nav-link { transition: all 0.3s ease; }
+        .nav-link:hover { color: var(--accent); }
+        .hw-card { background: var(--card-dark); border: 1px solid #1e293b; transition: all 0.3s ease; }
+        .hw-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .spec-label { color: var(--accent); font-size: 0.7rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; }
+        .tier-high { border-left: 4px solid #10b981; }
+        .tier-mid { border-left: 4px solid #f59e0b; }
+    </style>
+</head>
+<body>
+
+    <nav class="flex items-center justify-between px-8 py-6 border-b border-slate-800 bg-slate-950/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <i class="fa-solid fa-compact-disc text-2xl text-sky-400"></i>
+            <span class="text-xl font-black uppercase tracking-tighter">RetroStation<span class="text-sky-400">Rewind</span></span>
+        </div>
+        <div class="hidden md:flex gap-6 font-medium text-xs uppercase tracking-widest">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="news.html" class="nav-link">News</a>
+            <a href="emulatori.html" class="nav-link">Emulatori</a>
+            <a href="guide.html" class="nav-link">Guide</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
+            <a href="download.html" class="nav-link">Download</a>
+            <a href="hardware.html" class="text-sky-400 font-bold">Hardware</a>
+            <a href="community.html" class="nav-link">Project</a>
+        </div>
+    </nav>
+
+    <header class="py-16 px-8 max-w-6xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-black mb-4 uppercase italic tracking-tighter">Hardware <span class="text-sky-400">& Setup</span></h1>
+        <p class="text-slate-400 text-lg">Ottimizza la tua postazione: dai requisiti PC ai migliori controller sul mercato.</p>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-8 pb-32">
+
+        <section class="mb-20">
+            <div class="flex items-center gap-3 mb-8">
+                <i class="fa-solid fa-microchip text-sky-400 text-2xl"></i>
+                <h2 class="text-2xl font-bold uppercase tracking-widest italic">Specifiche Consigliate</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="hw-card p-8 rounded-3xl tier-mid">
+                    <h3 class="text-xl font-bold mb-4 italic">Setup Bilanciato (1080p)</h3>
+                    <p class="text-slate-400 text-sm mb-6">Ideale per PS2, GameCube e Wii con upscaling standard.</p>
+                    <ul class="space-y-4">
+                        <li><p class="spec-label">CPU</p><p class="text-white font-medium">Intel i5-10400 / Ryzen 5 3600</p></li>
+                        <li><p class="spec-label">GPU</p><p class="text-white font-medium">NVIDIA GTX 1650 / RX 6500 XT</p></li>
+                        <li><p class="spec-label">RAM</p><p class="text-white font-medium">8GB DDR4</p></li>
+                    </ul>
+                </div>
+
+                <div class="hw-card p-8 rounded-3xl tier-high">
+                    <h3 class="text-xl font-bold mb-4 italic text-sky-400">Setup Extreme (4K/8K)</h3>
+                    <p class="text-slate-400 text-sm mb-6">Per chi vuole il massimo: texture HD e filtri avanzati senza compromessi.</p>
+                    <ul class="space-y-4">
+                        <li><p class="spec-label">CPU</p><p class="text-white font-medium">Intel i7-13700K / Ryzen 7 7800X3D</p></li>
+                        <li><p class="spec-label">GPU</p><p class="text-white font-medium">NVIDIA RTX 4070 / RX 7800 XT</p></li>
+                        <li><p class="spec-label">RAM</p><p class="text-white font-medium">16GB DDR5</p></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20">
+            <div class="flex items-center gap-3 mb-8">
+                <i class="fa-solid fa-gamepad text-sky-400 text-2xl"></i>
+                <h2 class="text-2xl font-bold uppercase tracking-widest italic">Top Controller 2026</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="hw-card p-6 rounded-2xl">
+                    <div class="w-full h-32 bg-slate-800/50 rounded-xl mb-4 flex items-center justify-center">
+                        <i class="fa-solid fa-box text-3xl text-slate-600"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-1">8BitDo Ultimate</h4>
+                    <p class="text-xs text-sky-400 font-bold mb-3 uppercase">Il Best Buy</p>
+                    <p class="text-slate-400 text-xs leading-relaxed">Perfetto per il retro-gaming grazie al D-Pad superiore e sensori Hall Effect contro il drift.</p>
+                </div>
+
+                <div class="hw-card p-6 rounded-2xl">
+                    <div class="w-full h-32 bg-slate-800/50 rounded-xl mb-4 flex items-center justify-center">
+                        <i class="fa-solid fa-box text-3xl text-slate-600"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-1">DualSense Edge</h4>
+                    <p class="text-xs text-indigo-400 font-bold mb-3 uppercase">Esperienza Premium</p>
+                    <p class="text-slate-400 text-xs leading-relaxed">Ideale per PS1/PS2. Trigger adattivi e feedback aptico supportati dai core moderni.</p>
+                </div>
+
+                <div class="hw-card p-6 rounded-2xl">
+                    <div class="w-full h-32 bg-slate-800/50 rounded-xl mb-4 flex items-center justify-center">
+                        <i class="fa-solid fa-box text-3xl text-slate-600"></i>
+                    </div>
+                    <h4 class="font-bold text-lg mb-1">Xbox Series X Pad</h4>
+                    <p class="text-xs text-emerald-400 font-bold mb-3 uppercase">Compatibilità Totale</p>
+                    <p class="text-slate-400 text-xs leading-relaxed">Il controller standard. Plug & Play su ogni emulatore Windows senza configurazioni extra.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="bg-sky-500/10 border border-sky-500/20 p-8 rounded-3xl flex flex-col md:flex-row items-center gap-6">
+            <div class="text-4xl text-sky-400">
+                <i class="fa-solid fa-stopwatch"></i>
+            </div>
+            <div>
+                <h4 class="text-xl font-bold mb-1 italic">Riduci l'Input Lag al minimo</h4>
+                <p class="text-slate-400 text-sm italic">Configura il polling rate della tua porta USB a <b>1000Hz</b> utilizzando driver come <code>Lorden's Hidusbf</code>. Questo riduce il ritardo di risposta dei controller cablati sotto il millisecondo.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="py-12 border-t border-slate-900 bg-slate-950/50 text-center text-slate-600 text-[10px] uppercase tracking-[0.2em]">
+        © 2026 RetroStationRewind | Hardware Calibration Lab
+    </footer>
+
+</body>
+</html>
